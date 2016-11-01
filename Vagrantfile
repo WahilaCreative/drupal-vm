@@ -71,10 +71,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # SSH options.
   config.ssh.insert_key = false
-  config.ssh.forward_agent = true
+  config.ssh.forward_agent = false
 
   # Vagrant box.
   config.vm.box = vconfig['vagrant_box']
+  config.vm.box_version = "< 1.1.4"
 
   # If a hostsfile manager plugin is installed, add all server names as aliases.
   aliases = []
@@ -102,7 +103,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Synced folders.
   vconfig['vagrant_synced_folders'].each do |synced_folder|
     options = {
-      type: synced_folder['type'],
       rsync__auto: 'true',
       rsync__exclude: synced_folder['excluded_paths'],
       rsync__args: ['--verbose', '--archive', '--delete', '-z', '--chmod=ugo=rwX'],
@@ -115,9 +115,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
     config.vm.synced_folder synced_folder['local_path'], synced_folder['destination'], options
   end
-
-  # Allow override of the default synced folder type.
-  config.vm.synced_folder host_project_dir, '/vagrant', type: vconfig.include?('vagrant_synced_folder_default_type') ? vconfig['vagrant_synced_folder_default_type'] : 'nfs'
 
   # Provisioning. Use ansible if it's installed, ansible_local if not or if forced.
   if which('ansible-playbook') && !vconfig['force_ansible_local']

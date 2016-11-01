@@ -1,9 +1,18 @@
 ---
+# make sure that drupalvm directory is ours
+- name: Ensure correct permissions
+  file:
+    path: "/var/www/drupalvm/drupal"
+    state: directory
+    owner: vagrant
+    group: vagrant
+    mode: 0775
+    recurse: true
+
 - name: Copy drush makefile into place.
   copy:
     src: "{{ drush_makefile_path }}"
     dest: /tmp/drupal.make.yml
-  when: not drupal_site_exists
 
 - name: Ensure drupal_core_path directory exists.
   file:

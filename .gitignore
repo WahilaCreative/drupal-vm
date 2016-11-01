@@ -23,6 +23,7 @@ examples/prod/inventory
 examples/prod/bootstrap/vars.yml
 scripts/
 drupal/
+ignoremefiles
 
 # Some roles include 'config.yml' files.
 !provisioning/roles/**/config.yml
