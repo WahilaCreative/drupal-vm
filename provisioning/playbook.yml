@@ -136,3 +136,6 @@
       include: "{{ item }}"
       with_fileglob:
         - "{{ post_provision_tasks_dir|default(omit) }}"
+    
+    - name: Patch crappy backup_migrate file
+      copy: src=/vagrant/patched/sources.archivesource.inc dest=/var/www/drupalvm/drupal/web/sites/all/modules/backup_migrate/includes/sources.archivesource.inc owner=vagrant group=vagrant mode=0755
