@@ -1,0 +1,37 @@
+---
+api: 2
+
+# Basic Drush Make file for Drupal. Be sure to update the drupal_major_version
+# variable inside config.yml if you change the major version in this file.
+
+# Drupal core (major version, e.g. 6.x, 7.x, 8.x).
+core: "7.x"
+
+projects:
+
+  # Core.
+  drupal:
+    version: "7.51"
+    
+  # whatever this is
+  devel: "1.x-dev"
+  
+  # our modules
+  backup_migrate:
+    version: ~
+  ckeditor:
+    version: ~
+  ctools:
+    version: ~
+  entity:
+    version: ~
+  panels:
+    version: ~
+  pathauto:
+    version: ~
+  token:
+    version: ~
+  views:
+    version: ~
+  webform:
+    version: ~
