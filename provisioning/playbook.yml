@@ -139,3 +139,12 @@
     
     - name: Patch crappy backup_migrate file
       copy: src=/vagrant/patched/sources.archivesource.inc dest=/var/www/drupalvm/drupal/web/sites/all/modules/backup_migrate/includes/sources.archivesource.inc owner=vagrant group=vagrant mode=0755
+      
+    - name: Ensure that Drupal "private" storage directory exists
+      file:
+        path: "/home/vagrant/supersecret"
+        state: directory
+        owner: vagrant
+        group: vagrant
+        mode: 0777
+        recurse: true

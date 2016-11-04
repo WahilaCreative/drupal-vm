@@ -16,4 +16,4 @@ You will need/want to adjust the following parameters in the  `default.config.ym
  
  ## Notes
  
- You will see a directory called `ignoremefiles`, ummm, just ignore that. That is necessary consequence of file synchronization in Virtual Box. We needed certain permissions on the directory that it points to and this was the only way to get them set.
+ To get backup_migrate to work, you will need to set a "Private file system path" directory in. You need to do this in  the `Configuration -> File System`. A directory, `/home/vagrant/supersecret` will have been created with the correct permissions to be used as this "private" storage place, feel free to use it.
