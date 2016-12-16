@@ -193,7 +193,7 @@ installed_extras:
   - drupalconsole
   # - elasticsearch
   # - java
-  # mailhog
+  - mailhog
   # - memcached
   # - newrelic
   # - nodejs
@@ -213,7 +213,7 @@ extra_packages:
 # You can configure almost anything else on the server in the rest of this file.
 extra_security_enabled: false
 
-drush_version: "master"
+drush_version: "8.1.7"
 drush_keep_updated: true
 drush_composer_cli_options: "--prefer-dist --no-interaction"
 
@@ -230,6 +230,7 @@ firewall_allowed_tcp_ports:
   - "8443"
   - "8983"
   - "9200"
+  - "1025"
 firewall_log_dropped_packets: false
 
 # PHP Configuration. Currently-supported versions: 5.6, 7.0.
@@ -275,6 +276,7 @@ php_opcache_max_accelerated_files: 4096
 php_max_input_vars: "4000"
 php_upload_max_filesize: "2000M"
 php_post_max_size: "2000M"
+php_short_open_tag: true
 
 # Drupal VM defaults to using PHP-FPM with either Apache or Nginx. If you wish
 # to instead use Apache + mod_php with an Ubuntu base box, make sure you add
